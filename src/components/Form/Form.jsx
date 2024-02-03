@@ -19,6 +19,7 @@ const Form = () => {
 
     dispatch(update({name, value}))
   }
+  
   return (
     <div className="p-20 flex flex-col items-center">
 
