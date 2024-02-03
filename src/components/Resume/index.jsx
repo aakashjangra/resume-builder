@@ -31,21 +31,21 @@ const Resume = () => {
       {
         position: "senior manager",
         company: "University of Palval",
-        description: "",
+        description: "Oversaw project scope, timelines, and budget, resulting in the successful launch of the new infrastructure and improved site reliability metrics",
         startYear: "2021",
         endYear: "2023",
       },
       {
         position: "Master",
         company: "University of Palval",
-        description: "Description of experience",
+        description: "Managed a team of software developers and quality assurance specialists in the development and launch of a new customer relationship management (CRM) software product ",
         startYear: "2021",
         endYear: "2023",
       }
     ],
   }
   return (
-    <div className='resume w-screen flex flex-col p-20 gap-10'>
+    <div className='resume w-screen flex flex-col p-20 gap-5'>
       <div className='header text-red w-full flex justify-between pb-4 border-b-4 border-red'>
         <h1 className='font-bold text-4xl uppercase  '>{user.name}</h1>
         <div className='font-semibold'>
@@ -71,7 +71,7 @@ const Resume = () => {
                   </div>
                   <div>{edu.startYear} - {edu.endYear}</div>
                 </div>
-                <div>{edu.description}</div>
+               
               </div>
             );
           })
@@ -82,40 +82,42 @@ const Resume = () => {
         {
           user.experience.map((exp) => {
             return (
-              <div className='experience'>
-                <div>
-                  <div>{exp.position} | {exp.company}</div>
+              <div className='experience font-semibold '>
+                <div className='flex justify-between' >
+                  <div>
+                  <span>{exp.position}</span> | {exp.company}</div>
                   <div>{exp.startYear} - {exp.endYear}</div>
                 </div>
-                <div>{exp.description}</div>
+                <div className='pb-4'>{exp.description}</div>
               </div>
             );
           })
         }
       </div>
 
-      <div className="skills pb-4 border-b-4 border-red">
-        <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Skills</h2>
-        {
-          user.skills.map((skill) => {
-            return (
-              <div>
-                <div>
-                  {skill}
-                </div>
-              </div>
-            );
-          })
-        }
+      <div className="w-full skills pb-4 border-b-4 border-red">
+        <h2 className='text-4xl text-red font-bold pb-4 uppercase'>Skills</h2>
+        <div className="w-full grid grid-cols-3 font-semibold">
+          {
+            user.skills.map((skill) => {
+              return (
+                <li>
+                    {skill}
+                </li>
+              );
+            })
+          }
+         
+        </div>
       </div>
 
       <div className="activities">
         <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Activities</h2>
         {
           user.activities.map((activity) =>
-            <div>
+            <li className='pb-2 w-full font-semibold'>
               {activity}
-            </div>
+            </li>
           )
         }
       </div>

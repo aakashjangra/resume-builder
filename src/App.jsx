@@ -1,10 +1,14 @@
 import './App.css'
-import Resume from './components/Resume'
+import Form from './components/Form/Form'
 
-function App() {
 
+import React from 'react'
+
+const App = () => {
   return (
-    <Resume />
+    <div>
+    <Form/>
+    </div>
   )
 }
 
