@@ -1,28 +1,74 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FormInput from "../FormInput/FormInput";
+import { faEnvelope, faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedinIn,
+  faTwitterSquare,
+
+} from "@fortawesome/free-brands-svg-icons";
 
 const Form = () => {
   return (
     <div>
-    <h1 className="font-bold p-8 bg-blue text-neutral-50 text-center">Resume Builder</h1>
-    <div >
-    <h2 className="flex justify-center px-28 py-10 border-4">Personal Details</h2>
-    <div className="flex  flex-col grid justify-center grid-cols-2 gap-14">
-    <input className="px-5 py-2" type="text" name="Your Website" placeholder="FirstName" id="FirstName"   />
-    <input className="px-5 py-2" type="text" name="Last Name*" placeholder="Last Name*" id="Last Name*"   />
-    <div className='relative'>
-    <input className="px-5 py-2 w-full" type="text" name="Email" placeholder="Email" id="Email"/>
-    <FontAwesomeIcon className='absolute right-5 top-3' icon={faEnvelope} />
-    </div>
-    <input className="px-5 py-2" type="text" name="Phone Number" placeholder="Phone Number" id="Phone Number"   />
-    <input className="px-5 py-2" type="text" name="Your Website" placeholder="Your Website" id="Your Website"   />
-    <input className="px-5 py-2" type="text" name="Github" placeholder="Github" id="Github"   />
-    <input className="px-5 py-2" type="text" name="Linked In" placeholder="Linked IN" id="Linked IN"   />
-    <input className="px-5 py-2" type="text" name="Twitter" placeholder="Twitter" id="Twitter"   />
-    </div>
-    </div>
-    </div>
-  )
-}
+      <h1 className="font-bold p-8 bg-blue text-neutral-50 text-center">
+        Resume Builder
+      </h1>
+      <div>
+        <h2 className="flex justify-center px-28 py-10 border-4">
+          Personal Details
+        </h2>
+        <div className="flex  flex-col grid justify-center grid-cols-2 gap-14">
+          <FormInput
+            type={"text"}
+            name={"firstname"}
+            placeholder={"First Name"}
+          />
+          <FormInput
+            type={"text"}
+            name={"lastname"}
+            placeholder={"Last Name*"}
+          />
+          <FormInput
+            type={"text"}
+            name={"phoneNumber"}
+            placeholder={"Phone Number"}
+            icon={faPhone}
+          />
 
-export default Form
+          <FormInput
+            type={"text"}
+            name={"website"}
+            placeholder={"Your Website"}
+            icon={faGlobe}
+          />
+
+          <FormInput type={"text"} name={"github"} placeholder={"GitHub"} icon={faGithub} />
+
+          <FormInput
+            type={"text"}
+            name={"linkedin"}
+            placeholder={"LinkedIn"}
+            icon={faLinkedinIn}
+          />
+
+          <FormInput
+            type={"text"}
+            name={"email"}
+            placeholder={"Email"}
+            icon={faEnvelope}
+          />
+
+          <FormInput
+            type={"text"}
+            name={"twitter"}
+            placeholder={"twitter"}
+            icon={faTwitterSquare}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Form;
