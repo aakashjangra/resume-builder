@@ -23,28 +23,28 @@ const Form = ({children}) => {
 
   const [education, setEducation] = useState(
     {
-      degree: "Master",
-      institute: "University of Palval",
-      description: "faltu degree",
-      startYear: "2021",
-      endYear: "2023",
+      degree: "",
+      institute: "",
+      description: "",
+      startYear: "",
+      endYear: "",
     }
   );
   const [experience, setExperience] = useState(
     [
       {
-        position: "senior manager",
-        company: "University of Palval",
-        description: "Oversaw project scope, timelines, and budget, resulting in the successful launch of the new infrastructure and improved site reliability metrics",
-        startYear: "2021",
-        endYear: "2023",
+        position: "",
+        company: "",
+        description: "",
+        startYear: "",
+        endYear: "",
       },
       {
-        position: "Master",
-        company: "University of Palval",
-        description: "Managed a team of software developers and quality assurance specialists in the development and launch of a new customer relationship management (CRM) software product ",
-        startYear: "2021",
-        endYear: "2023",
+        position: "",
+        company: "",
+        description: "",
+        startYear: "",
+        endYear: "",
       }
     ]
   )
@@ -201,7 +201,7 @@ const Form = ({children}) => {
                   type={`${key === 'startYear' || key === 'endYear' ? 'number' : 'text'}`}
                   name={key}
                   placeholder={key}
-                  value={experience[key]}
+                  value={education[key]}
                   onChange={(e) => {
                     setEducation({ ...education, [key]: e.target.value })
                   }}
