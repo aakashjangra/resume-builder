@@ -2,12 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
  value : {
-    name: 'Aditi',
-    objective: 'Full Stack Engineer with a passion for creating robust and scalable web applications. Seeking a challenging position where I can leverage my expertise in both front-end and back-end technologies to contribute to the development and optimization of innovative software solutions.',
-    phoneNo: '9818095566',
-    email: 'aditijha1403@gmail.com',
-    address: 'QutubMinar New delhi, 110030',
-    education: [
+    firstname: '',
+    lastname:'',
+    website:'',
+    twitter: 'https://twitter.com',
+    linkedin: 'https://www.linkedin.com',
+    github: 'https://github.com',
+
+    objective: '',
+    email: '',
+    address: '',
+    education: 
       {
         degree: "Master",
         institute: "University of Palval",
@@ -15,14 +20,8 @@ const initialState = {
         startYear: "2021",
         endYear: "2023",
       },
-      {
-        degree: "Master",
-        institute: "University of Palval",
-        description: "",
-        startYear: "2021",
-        endYear: "2023",
-      }
-    ],
+     
+    
     skills: ['project management', 'Technical expertise', 'Leadership', 'Communication', 'Problem-solving', 'Attention to detail'],
 
     activities: ['Participated in several hackathons, including a winning team at the 20XX Hack event, demonstrating the ability to work under pressure and come up with innovative solutions to technical challenges. ', 'sleeping', 'drinking'],
@@ -45,7 +44,6 @@ const initialState = {
 }
 }
 
-
 export const resumeDataSlice = createSlice({
   name: "resumeData",
   initialState,
@@ -53,10 +51,16 @@ export const resumeDataSlice = createSlice({
     update: (state, action) => {
       const { name, value } = action.payload;
       state.value[name] = value 
-    }
+    },
+    // updateObj: (state, action) => {
+    //   const { objName, name, value } = action.payload;
+    //   Object.assign(state.value[objName], {name: value}); 
+
+    //   console.log(state.value[objName][name], objName, name)
+    // }
   }
 })
 
-export const { update } = resumeDataSlice.actions
+export const { update, updateObj } = resumeDataSlice.actions
 
 export default resumeDataSlice.reducer;

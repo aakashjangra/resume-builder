@@ -1,74 +1,36 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FormInput from "../FormInput/FormInput";
-import { faEnvelope, faGlobe, faPhone } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedinIn,
-  faTwitterSquare,
+// import React, { useMemo, useState } from 'react'
 
-} from "@fortawesome/free-brands-svg-icons";
+// const Form2 = () => {
+//   const [currentPage, setCurrentPage] = useState(1);
 
-const Form = () => {
-  return (
-    <div>
-      <h1 className="font-bold p-8 bg-blue text-neutral-50 text-center">
-        Resume Builder
-      </h1>
-      <div>
-        <h2 className="flex justify-center px-28 py-10 border-4">
-          Personal Details
-        </h2>
-        <div className="flex  flex-col grid justify-center grid-cols-2 gap-14">
-          <FormInput
-            type={"text"}
-            name={"firstname"}
-            placeholder={"First Name"}
-          />
-          <FormInput
-            type={"text"}
-            name={"lastname"}
-            placeholder={"Last Name*"}
-          />
-          <FormInput
-            type={"text"}
-            name={"phoneNumber"}
-            placeholder={"Phone Number"}
-            icon={faPhone}
-          />
+//   const data = [1, 2, 3, 4];
 
-          <FormInput
-            type={"text"}
-            name={"website"}
-            placeholder={"Your Website"}
-            icon={faGlobe}
-          />
+//   const currentTableData = useMemo(() => {
+//     const firstPageIndex = (currentPage - 1) * PageSize;
+//     const lastPageIndex = firstPageIndex + PageSize;
 
-          <FormInput type={"text"} name={"github"} placeholder={"GitHub"} icon={faGithub} />
+//     return data.slice(firstPageIndex, lastPageIndex);
+//   }, [currentPage]);
 
-          <FormInput
-            type={"text"}
-            name={"linkedin"}
-            placeholder={"LinkedIn"}
-            icon={faLinkedinIn}
-          />
+//   return (
+//     <div>
+//       {
+//         currentTableData.map(item => {
+//           return (
+//             <h1>{item}</h1>
+//           ) 
+//         })
+//       }
+//       <Pagination
+//         className="pagination-bar"
+//         currentPage={currentPage}
+//         totalCount={data.length}
+//         pageSize={PageSize}
 
-          <FormInput
-            type={"text"}
-            name={"email"}
-            placeholder={"Email"}
-            icon={faEnvelope}
-          />
+//         onPageChange={page => setCurrentPage(page)} 
+//       />
+//     </div>
+//   )
+// }
 
-          <FormInput
-            type={"text"}
-            name={"twitter"}
-            placeholder={"twitter"}
-            icon={faTwitterSquare}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Form;
+// export default Form2
