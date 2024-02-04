@@ -48,10 +48,28 @@ const Resume = () => {
         </div>
         <div className=' place-self-end'>
           <div className='social-icons pt-2 flex gap-4'>
-            <a className='text-blue' href={resumeData.website} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGlobe} /></a>
-            <a className='text-blue' href={resumeData.linkedin} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faLinkedin} /></a>
-            <a className='text-sky-400' href={resumeData.twitter} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faTwitterSquare} /></a>
-            <a className='text-black' href={resumeData.github} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGithub} /></a>
+          {
+            resumeData.website && (
+              <a className='text-blue' href={resumeData.website} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGlobe} /></a>
+              )
+            }
+            {
+              resumeData.linkedin && (
+                <a className='text-blue' href={resumeData.linkedin} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faLinkedin} /></a>
+                )
+              }
+              {
+                resumeData.twitter && (
+                  <a className='text-sky-400' href={resumeData.twitter} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faTwitterSquare} /></a>
+                  )
+                }
+                {
+                  resumeData.github && (
+                    <a className='text-black' href={resumeData.github} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGithub} /></a>
+                    )
+                  }
+                        
+            
           </div>
         </div>
       </div>
@@ -72,9 +90,21 @@ const Resume = () => {
         <div className='education font-semibold'>
           <div className='flex justify-between'>
             <div>
-              <span className='font-bold'>{resumeData.education.degree}</span> | {resumeData.education.institute}
+              <span className='font-bold'>{resumeData.education.degree}</span> 
+              {
+                resumeData.education.degree && resumeData.education.institute && (
+              <span> | </span>
+                )
+              }
+               {resumeData.education.institute}
             </div>
-            <div>{resumeData.education.startYear} - {resumeData.education.endYear}</div>
+            <div>{resumeData.education.startYear} 
+            {
+              resumeData.education.startYear && resumeData.education.endYear && (
+            <span> - </span>
+              )
+            }
+             {resumeData.education.endYear}</div>
           </div>
           <p>{resumeData.education.description}</p>
         </div>
@@ -87,8 +117,22 @@ const Resume = () => {
               <div className='experience font-semibold' key={indx}>
                 <div className='flex justify-between' >
                   <div>
-                    <span>{exp.position}</span> | {exp.company}</div>
-                  <div>{exp.startYear} - {exp.endYear}</div>
+                    <span>{exp.position}</span> 
+                    {
+                      exp.position && exp.company && (
+                    <span> | </span>
+                      )
+                    }
+                     {exp.company}
+                    </div>
+                  <div>{exp.startYear} 
+                  {
+                    exp.startYear && exp.endYear && (
+                  <span> - </span>
+                    )
+                  }
+                  
+                  {exp.endYear}</div>
                 </div>
                 <div className='pb-4'>{exp.description}</div>
               </div>
