@@ -28,7 +28,8 @@ const Resume = () => {
   
 
   return (
-    <div className='resume w-screen flex flex-col p-20 gap-5'>
+    <div>
+    <div className='resume print:border-none print:m-0  border-4 border-black flex flex-col m-5 p-3  gap-5'>
       <div className='header w-full flex justify-between pb-4 border-b-4 border-red'>
         <div>
           <h1 className='font-normal text-7xl uppercase text-red '>{resumeData.firstname} {resumeData.lastname}</h1>
@@ -54,11 +55,16 @@ const Resume = () => {
           </div>
         </div>
       </div>
-
-      <div className='objective border-b-4 border-red pb-4'>
-        <h2 className='text-4xl text-red font-bold pb-4 uppercase '>objective</h2>
-        <p className='font-semibold'>{resumeData.objective}</p>
-      </div>
+      {
+        (resumeData.objective ) && (
+          <div className='objective border-b-4 border-red pb-4'>
+          <h2 className='text-4xl text-red font-bold pb-4 uppercase '>objective</h2>
+          <p className='font-semibold'>{resumeData.objective}</p>
+  
+        </div>
+        )
+      }
+     
 
       <div className='education-section pb-4 border-b-4 border-red'>
         <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Education</h2>
@@ -141,6 +147,12 @@ const Resume = () => {
       }
       
     </div>
+    <div className=' print:hidden  download my-8 flex justify-center w-full'>
+      <button className='text-center bg-blue-200 text-white p-4 rounded-full ' onClick={()=>{
+      window.print()
+      }} >Download Resume</button>
+      </div>
+      </div>
   )
 }
 

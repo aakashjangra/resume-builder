@@ -50,11 +50,13 @@ const Form = ({children}) => {
   )
   const[skills,setSkills] = useState(
    [
-    '' ,'' ,''
+    '' ,'' ,'','','','',
    ]
   )
 
-  const [activities, setActivities] = useState(['', '', '']);
+  const [activities, setActivities] = useState([
+    '' ,'' ,''
+   ]);
 
   const updateSkillOrActivity = (type, array, indx, value) => {
     const newArr = [...array]
@@ -185,7 +187,7 @@ const Form = ({children}) => {
  
     </div>,
       <div className="Educational Details">
-        <h1 className="font-bold p-8 mb-6 bg-blue text-neutral-50 text-center">
+        <h1 className="flex justify-center px-28 py-10  mb-6 border-4">
           Educational Details
         </h1>
         <div className="flex-col grid justify-center grid-cols-2 gap-14">
@@ -217,7 +219,7 @@ const Form = ({children}) => {
             experience.map((exp, indx) => {
               return (
                 <div  key={indx}>
-                  <h1 className="font-[600] text-3xl  w-full text-center my-5 ">Experience {indx}</h1>
+                  <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Experience {indx}</h1>
                   <div className="grid grid-cols-2  gap-4">
                   {
                     Object.keys(exp).map((key) => {
@@ -245,7 +247,9 @@ const Form = ({children}) => {
           }
       </div>,
 
-      <div className=" skills">
+      <div className="skills">
+      <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Skills</h1>
+      <div className="grid grid-cols-3 gap-4 px-4">
       {
         skills.map((skill , indx ) => {
           return (
@@ -267,10 +271,12 @@ const Form = ({children}) => {
           )
         })
       }
+      </div>
      
 
       <div className="activities">
-    
+      <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Activities</h1>
+      <div className="grid grid-cols-3 gap-4 px-4" >
         {
           activities.map((activity, indx) => {
             return (
@@ -289,6 +295,7 @@ const Form = ({children}) => {
               )
           })
         }
+      </div>
       </div>
       </div>
   ]

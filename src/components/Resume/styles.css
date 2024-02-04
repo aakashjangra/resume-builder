@@ -1,3 +1,11 @@
 .resume{
   font-family: 'Montserrat', sans-serif;
 }
+@media print{
+  .resume{
+    margin: 0;
+  }
+  .download{
+    display: none;
+  }
+}
