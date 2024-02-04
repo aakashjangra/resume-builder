@@ -86,8 +86,106 @@ const Form = ({children}) => {
   const [fieldToShow, setFieldToShow] = useState(0);
   
   const FORM_FIELDS = [
+    <div>
+  
+  <div>
+    <h2 className="flex justify-center px-28 py-10  mb-6 border-4">
+      Personal Details
+    </h2>
+    <div className="grid justify-center grid-cols-2 gap-14">
+      <FormInput
+        type={"text"}
+        name={"firstname"}
+        placeholder={"First Name"}
+        value={resumeData.firstname}
+        onChange={updateField}
+        icon={null}
+      />
+      <FormInput
+        type={"text"}
+        name={"lastname"}
+        placeholder={"Last Name"}
+        value={resumeData.lastname}
+        onChange={updateField}
+        icon={null}
+      />
+      <FormInput
+        type={"text"}
+        name={"objective"}
+        placeholder={"Objective*"}
+        value={resumeData.objective}
+        onChange={updateField}
+        icon={null}
+      />
+      <FormInput
+        type={"text"}
+        name={"phoneNo"}
+        placeholder={"Phone Number"}
+        value={resumeData.phoneNo}
+        onChange={updateField}
+        icon={faPhone}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"address"}
+        placeholder={"Address"}
+        value={resumeData.address}
+        onChange={updateField}
+        icon={faHouse}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"website"}
+        placeholder={"Your Website"}
+        value={resumeData.website}
+        onChange={updateField}
+        icon={faGlobe}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"github"}
+        placeholder={"GitHub"}
+        icon={faGithub}
+        value={resumeData.github}
+        onChange={updateField}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"linkedin"}
+        placeholder={"LinkedIn"}
+        icon={faLinkedinIn}
+        value={resumeData.linkedin}
+        onChange={updateField}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"email"}
+        placeholder={"Email"}
+        icon={faEnvelope}
+        value={resumeData.email}
+        onChange={updateField}
+      />
+
+      <FormInput
+        type={"text"}
+        name={"twitter"}
+        placeholder={"twitter"}
+        icon={faTwitterSquare}
+        value={resumeData.twitter}
+        onChange={updateField}
+      />
+    </div>
+    
+  </div>
+ 
+    </div>,
       <div className="Educational Details">
-        <h1 className="font-bold p-8 bg-blue text-neutral-50 text-center">
+        <h1 className="font-bold p-8 mb-6 bg-blue text-neutral-50 text-center">
           Educational Details
         </h1>
         <div className="flex-col grid justify-center grid-cols-2 gap-14">
@@ -118,11 +216,13 @@ const Form = ({children}) => {
           {
             experience.map((exp, indx) => {
               return (
-                <div key={indx}>
-                  <h1>Experience {indx}</h1>
+                <div  key={indx}>
+                  <h1 className="font-[600] text-3xl  w-full text-center my-5 ">Experience {indx}</h1>
+                  <div className="grid grid-cols-2  gap-4">
                   {
                     Object.keys(exp).map((key) => {
                       return (
+                        
                         <FormInput
                           key={key}
                           type={`${key === 'startYear' || key === 'endYear' ? 'number' : 'text'}`}
@@ -138,17 +238,19 @@ const Form = ({children}) => {
                       )
                     })
                   }
-
+                </div>
                 </div>
               )
             })
           }
       </div>,
 
-      <div className="skills">
+      <div className=" skills">
       {
         skills.map((skill , indx ) => {
           return (
+           
+            
             <FormInput
               key={indx}
               type= 'text'
@@ -161,15 +263,18 @@ const Form = ({children}) => {
               icon={null}
               required
             />
+          
           )
         })
       }
-      </div>, 
+     
 
       <div className="activities">
+    
         {
           activities.map((activity, indx) => {
             return (
+              
                 <FormInput
                   key={indx}
                   type='text'
@@ -184,6 +289,7 @@ const Form = ({children}) => {
               )
           })
         }
+      </div>
       </div>
   ]
 
@@ -223,8 +329,10 @@ const Form = ({children}) => {
   return (
     <div>
       
-
-      {FORM_FIELDS[fieldToShow]}
+    <h1 className="font-bold p-8  mb-5 bg-blue text-neutral-50   text-center">
+    Resume Builder
+    </h1>
+      {FORM_FIELDS[fieldToShow]} 
 
       <div className="w-full flex justify-around p-10">  
       {
