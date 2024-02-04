@@ -6,7 +6,9 @@ import React from 'react'
 
 const App = () => {
   return (
-    <Form/>
+    <Form>
+      <h1>Children</h1>
+    </Form>
   )
 }
 

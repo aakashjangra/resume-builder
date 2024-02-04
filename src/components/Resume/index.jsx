@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles.css'
 import { useSelector } from 'react-redux'
-import {  faGithub, faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 const Resume = () => {
+  const [showSkills, setShowSkills] = useState(false);
+  const [showActivities, setShowActivities] = useState(false);
 
   const resumeData = useSelector(state => state.resumeData.value);
+
+  useEffect(() => {
+
+    resumeData.skills.map((skill) => {
+      if(skill){
+        setShowSkills(true)
+      }
+    })
+
+    resumeData.activities.map((activity) => {
+      if(activity){
+        setShowActivities(true)
+      }
+    })
+  }, [])
+  
 
   return (
     <div className='resume w-screen flex flex-col p-20 gap-5'>
@@ -16,23 +34,23 @@ const Resume = () => {
           <h1 className='font-normal text-7xl uppercase text-red '>{resumeData.firstname} {resumeData.lastname}</h1>
           <div className='font-semibold text-red'>
             <p>{resumeData.address}</p>
-            <p>{resumeData.phoneNo} 
-            {
-              (resumeData.phoneNo && resumeData.email) && (
-                <span> | </span>
-              )
-            }
-            
-             {resumeData.email}</p>
+            <p>{resumeData.phoneNo}
+              {
+                (resumeData.phoneNo && resumeData.email) && (
+                  <span> | </span>
+                )
+              }
+
+              {resumeData.email}</p>
           </div>
-          
+
         </div>
         <div className=' place-self-end'>
           <div className='social-icons pt-2 flex gap-4'>
-            <a className='text-blue' href={resumeData.website} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon ={ faGlobe} /></a>
-            <a className='text-blue' href={resumeData.linkedin} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon ={ faLinkedin} /></a>
-            <a className='text-sky-400' href={resumeData.twitter} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon ={ faTwitterSquare} /></a>
-            <a className='text-black' href={resumeData.github} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon ={ faGithub} /></a>
+            <a className='text-blue' href={resumeData.website} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGlobe} /></a>
+            <a className='text-blue' href={resumeData.linkedin} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faLinkedin} /></a>
+            <a className='text-sky-400' href={resumeData.twitter} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faTwitterSquare} /></a>
+            <a className='text-black' href={resumeData.github} target='_blank'><FontAwesomeIcon className='w-7 h-7' icon={faGithub} /></a>
           </div>
         </div>
       </div>
@@ -45,42 +63,25 @@ const Resume = () => {
       <div className='education-section pb-4 border-b-4 border-red'>
         <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Education</h2>
 
-         <div className='education font-semibold'>
-            <div className='flex justify-between'>
-              <div>
-                <span className='font-bold'>{resumeData.education.degree}</span> | {resumeData.education.institute}
-              </div>
-              <div>{resumeData.education.startYear} - {resumeData.education.endYear}</div>
+        <div className='education font-semibold'>
+          <div className='flex justify-between'>
+            <div>
+              <span className='font-bold'>{resumeData.education.degree}</span> | {resumeData.education.institute}
             </div>
+            <div>{resumeData.education.startYear} - {resumeData.education.endYear}</div>
+          </div>
+          <p>{resumeData.education.description}</p>
         </div>
-        {
-          
-          
-          // Object.keys(resumeData.education).map((key) => {
-          //   return (
-          //     <div className='education font-semibold'>
-          //       <div className='flex justify-between'>
-          //         <div>
-          //           <span className='font-bold'>{resume
-          //           Data.education[key].degree}</span> | {edu.institute}
-          //         </div>
-          //         <div>{edu.startYear} - {edu.endYear}</div>
-          //       </div>
-               
-          //     </div>
-          //   );
-          // })
-        }
       </div>
       <div className='experience-section pb-4 border-b-4 border-red'>
         <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Experience</h2>
         {
-          resumeData.experience.map((exp) => {
+          resumeData.experience.map((exp, indx) => {
             return (
-              <div className='experience font-semibold '>
+              <div className='experience font-semibold' key={indx}>
                 <div className='flex justify-between' >
                   <div>
-                  <span>{exp.position}</span> | {exp.company}</div>
+                    <span>{exp.position}</span> | {exp.company}</div>
                   <div>{exp.startYear} - {exp.endYear}</div>
                 </div>
                 <div className='pb-4'>{exp.description}</div>
@@ -90,32 +91,55 @@ const Resume = () => {
         }
       </div>
 
-      <div className="w-full skills pb-4 border-b-4 border-red">
+    {
+      showSkills && (
+        <div className="w-full skills pb-4 border-b-4 border-red">
         <h2 className='text-4xl text-red font-bold pb-4 uppercase'>Skills</h2>
         <div className="w-full grid grid-cols-3 font-semibold">
           {
-            resumeData.skills.map((skill) => {
+            resumeData.skills.map((skill, indx) => {
+              if(!skill){
+                return null;
+              } 
+              
               return (
-                <li>
-                    {skill}
+                <li key={indx}>
+                  {skill}
                 </li>
               );
             })
           }
-         
+
         </div>
       </div>
+  )
+}
+      
 
-      <div className="activities">
-        <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Activities</h2>
-        {
-          resumeData.activities.map((activity) =>
-            <li className='pb-2 w-full font-semibold'>
-              {activity}
-            </li>
-          )
-        }
-      </div>
+      {
+        showActivities && (
+          <div className="activities">
+          <h2 className='text-4xl text-red font-bold pb-4 uppercase '>Activities</h2>
+          {
+            resumeData.activities.map((activity, indx) =>
+            {
+              
+              if(!activity){
+                return null;
+              } 
+              
+              return (
+                <li className='pb-2 w-full font-semibold' key={indx}>
+                  {activity}
+                </li>
+              );
+              
+            })
+          }
+        </div>
+        )
+      }
+      
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
- value : {
+  value: {
     firstname: '',
-    lastname:'',
-    website:'',
+    lastname: '',
+    website: '',
     twitter: 'https://twitter.com',
     linkedin: 'https://www.linkedin.com',
     github: 'https://github.com',
@@ -12,19 +12,19 @@ const initialState = {
     objective: '',
     email: '',
     address: '',
-    education: 
-      {
-        degree: "Master",
-        institute: "University of Palval",
-        description: "faltu degree",
-        startYear: "2021",
-        endYear: "2023",
-      },
-     
-    
+    education:
+    {
+      degree: "Master",
+      institute: "University of Palval",
+      description: "faltu degree",
+      startYear: "2021",
+      endYear: "2023",
+    },
+
     skills: ['project management', 'Technical expertise', 'Leadership', 'Communication', 'Problem-solving', 'Attention to detail'],
 
     activities: ['Participated in several hackathons, including a winning team at the 20XX Hack event, demonstrating the ability to work under pressure and come up with innovative solutions to technical challenges. ', 'sleeping', 'drinking'],
+
     experience: [
       {
         position: "senior manager",
@@ -41,7 +41,7 @@ const initialState = {
         endYear: "2023",
       }
     ],
-}
+  }
 }
 
 export const resumeDataSlice = createSlice({
@@ -50,7 +50,7 @@ export const resumeDataSlice = createSlice({
   reducers: {
     update: (state, action) => {
       const { name, value } = action.payload;
-      state.value[name] = value 
+      state.value[name] = value
     },
     // updateObj: (state, action) => {
     //   const { objName, name, value } = action.payload;
