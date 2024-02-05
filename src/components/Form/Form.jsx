@@ -112,7 +112,7 @@ const Form = () => {
       <FormInput
         type={"text"}
         name={"objective"}
-        placeholder={"Objective*"}
+        placeholder={"Objective"}
         value={resumeData.objective}
         onChange={updateField}
         icon={null}
