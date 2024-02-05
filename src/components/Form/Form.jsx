@@ -13,10 +13,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { update, updateObj } from "../../store/features/resumeData/resumeData.slice";
+import { update } from "../../store/features/resumeData/resumeData.slice";
 import { useEffect, useState } from "react";
 
-const Form = ({children}) => {
+const Form = () => {
   const navigate = useNavigate();
   const resumeData = useSelector((state) => state.resumeData.value);
   const dispatch = useDispatch();
@@ -73,7 +73,6 @@ const Form = ({children}) => {
     navigate("/resume");
   };
 
-
   const updateObjectField = (name, value) => {
     dispatch(update({ name, value }));
   }
@@ -90,11 +89,11 @@ const Form = ({children}) => {
   const FORM_FIELDS = [
     <div>
   
-  <div>
-    <h2 className="flex justify-center px-28 py-10  mb-6 border-4">
+  <div className="px-2 md:px-2">
+    <h2 className="flex justify-center p-2 sm:px-28 sm:py-10 mb-6 border-4">
       Personal Details
     </h2>
-    <div className="grid justify-center grid-cols-2 gap-14">
+    <div className="grid justify-center grid-cols-2 gap-4 sm:gap-14">
       <FormInput
         type={"text"}
         name={"firstname"}
@@ -336,16 +335,16 @@ const Form = ({children}) => {
   return (
     <div>
       
-    <h1 className="font-bold p-8  mb-5 bg-blue text-neutral-50   text-center">
+    <h1 className="font-bold p-5 sm:p-8 mb-5 sm:mb-5 bg-blue text-neutral-50   text-center">
     Resume Builder
     </h1>
       {FORM_FIELDS[fieldToShow]} 
 
-      <div className="w-full flex justify-around p-10">  
+      <div className="w-full flex justify-around p-5 sm:p-10">  
       {
         fieldToShow > 0 && (
           <button 
-            className="bg-orange-300 p-4 rounded-md font-bold"
+            className="bg-orange-300 p-2 sm:p-4 rounded-md font-bold"
             onClick={() => {changeField(fieldToShow - 1)}}
           >
             PREV
@@ -356,7 +355,7 @@ const Form = ({children}) => {
         {
           (fieldToShow === FORM_FIELDS.length - 1) && (
             <button 
-              className="bg-green-300 p-4 rounded-md font-bold"
+              className="bg-green-300 p-2 sm:p-4 rounded-md font-bold"
               onClick={submitHandler}
             >
               Generate Resume
@@ -367,7 +366,7 @@ const Form = ({children}) => {
         {
           (fieldToShow < FORM_FIELDS.length - 1) && (
             <button 
-              className="bg-sky-300 p-4 rounded-md font-bold"
+              className="bg-sky-300 p-2 sm:p-4 rounded-md font-bold"
               onClick={() => {changeField(fieldToShow + 1)}}
             >
               NEXT
