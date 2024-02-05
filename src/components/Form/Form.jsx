@@ -13,7 +13,7 @@ import {
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { update } from "../../store/features/resumeData/resumeData.slice";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -89,7 +89,7 @@ const Form = () => {
     <div>
   
   <div className="px-2 md:px-2">
-    <h2 className="flex justify-center p-2 sm:px-28 sm:py-10 mb-6 border-4">
+    <h2 className="flex justify-center p-4 sm:px-28 sm:py-10 mb-6 border-4">
       Personal Details
     </h2>
     <div className="grid justify-center grid-cols-2 gap-4 sm:gap-14">
@@ -163,7 +163,7 @@ const Form = () => {
       />
 
       <FormInput
-        type={"text"}
+        type={"email"}
         name={"email"}
         placeholder={"Email"}
         icon={faEnvelope}
@@ -184,16 +184,15 @@ const Form = () => {
   </div>
  
     </div>,
-      <div className="Educational Details">
-        <h1 className="flex justify-center px-28 py-10  mb-6 border-4">
+      <div className="educational-details px-2 md:px-2">
+        <h2 className="flex justify-center p-4 sm:px-28 sm:py-10 mb-6 border-4">
           Educational Details
-        </h1>
-        <div className="flex-col grid justify-center grid-cols-2 gap-14">
+        </h2>
+        <div className="flex-col grid justify-center grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-14">
 
           {
             Object.keys(education).map((key) => {
               return (
-
                 <FormInput
                   key={key}
                   type={`${key === 'startYear' || key === 'endYear' ? 'number' : 'text'}`}
@@ -216,9 +215,9 @@ const Form = () => {
           {
             experience.map((exp, indx) => {
               return (
-                <div  key={indx}>
-                  <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Experience {indx}</h1>
-                  <div className="grid grid-cols-2  gap-4">
+                <div  key={indx} className="px-2 md:px-2">
+                  <h2 className="flex justify-center p-4 sm:px-28 sm:py-10 my-6 border-4">Experience {indx}</h2>
+                  <div className="grid sm:grid-cols-2 gap-4">
                   {
                     Object.keys(exp).map((key) => {
                       return (
@@ -245,9 +244,9 @@ const Form = () => {
           }
       </div>,
 
-      <div className="skills">
-      <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Skills</h1>
-      <div className="grid grid-cols-3 gap-4 px-4">
+    <div className="skills-and-activities px-2 md:px-2">
+      <h2 className="flex justify-center p-4 sm:px-28 sm:py-10 mb-6 border-4">Skills</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
       {
         skills.map((skill , indx ) => {
           return (
@@ -271,10 +270,8 @@ const Form = () => {
       }
       </div>
      
-
-      <div className="activities">
-      <h1 className=" flex justify-center px-28 py-10  mb-6 border-4 ">Activities</h1>
-      <div className="grid grid-cols-3 gap-4 px-4" >
+      <h2 className="flex justify-center p-4 sm:px-28 sm:py-10 my-6 border-4">Activities</h2>
+      <div className="grid sm:grid-cols-3 gap-4" >
         {
           activities.map((activity, indx) => {
             return (
@@ -293,8 +290,8 @@ const Form = () => {
               )
           })
         }
-      </div>
-      </div>
+
+        </div>
       </div>
   ]
 
@@ -331,12 +328,21 @@ const Form = () => {
     updateObjectField("skills", skills)
   },[skills])
 
+  useEffect(() => {
+    if(resumeData){
+      setEducation(resumeData.education)
+      setExperience(resumeData.experience)
+      setActivities(resumeData.activities)
+      setSkills(resumeData.skills)
+    }
+  }, [])
+
   return (
     <div>
       
-    <h1 className="font-bold p-5 sm:p-8 mb-5 sm:mb-5 bg-blue text-neutral-50   text-center">
+    <h2 className="font-bold p-5 sm:p-8 mb-5 sm:mb-5 bg-blue text-neutral-50   text-center">
     Resume Builder
-    </h1>
+    </h2>
       {FORM_FIELDS[fieldToShow]} 
 
       <div className="w-full flex justify-around p-5 sm:p-10">  
