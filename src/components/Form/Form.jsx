@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import FormInput from "./FormInput";
 import {
   faEnvelope,
@@ -13,10 +13,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { update, updateObj } from "../../store/features/resumeData/resumeData.slice";
+import { update } from "../../store/features/resumeData/resumeData.slice";
 import { useEffect, useState } from "react";
 
-const Form = ({children}) => {
+const Form = () => {
   const navigate = useNavigate();
   const resumeData = useSelector((state) => state.resumeData.value);
   const dispatch = useDispatch();
