@@ -6,9 +6,8 @@ import React from 'react'
 
 const App = () => {
   return (
-    <Form>
-      <h1>Children</h1>
-    </Form>
+    <Form/>
+    
   )
 }
 
